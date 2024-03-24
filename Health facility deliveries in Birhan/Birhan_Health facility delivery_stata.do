@@ -8,16 +8,15 @@ clear matrix
 clear mata
 set maxvar 20000
 
-* 1. Importing de-identified community births dataset
-// import delimited "...de_identified_homebirths_final.csv", replace
-import delimited "G:\Shared drives\24.1. Phase I Data (de-identified)\6. Manuscripts\homebirths\de_identified_homebirths_data_final.csv"
+*1. Importing de-identified community births dataset
+import delimited "...de_identified_homebirths_data_final.csv", replace
 
-* 2. Adding labels to wealth index variables
+*2. Adding labels to wealth index variables
 label define wealthind_5cat 1"Poorest" 2 "Poorer" 3 "Middle" 4 "Richer" 5 "Richest"
 label values wealthindex_5cat wealthind_5cat
 tab wealthindex_5cat
 
-* 3. Categorizing and Labelling religions and ethnicity variables
+*3. Categorizing and Labelling religions and ethnicity variables
 label define rel_cat 1 "1. Orthodox Christian" 2 "2. Muslim" 3 "3. Protestant Christian" 
 encode rel, gen(rel_cat)
 replace rel_cat = 0 if rel_cat ==  1 | rel_cat == 3
